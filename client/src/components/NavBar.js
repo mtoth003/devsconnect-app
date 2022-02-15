@@ -1,0 +1,100 @@
+import {NavLink} from "react-router-dom"
+import styled from "styled-components"
+// import {Button} from "../styles"
+
+function NavBar({user, setUser}) {
+
+  // const handleLogoutClick = () => {
+  //   fetch("api/logout", {
+  //     method: "DELETE",
+  //   }).then((r) => {
+  //     if(r.ok) {
+  //       setUser(null)
+  //     }
+  //   })
+  // }
+
+  const handleLogoutClick = () => {
+    setUser(null);
+    fetch("api/logout", { method: "DELETE" });
+  }
+
+  return (
+    <div>
+      <NavBarStyle>
+        <NavLink to="/"><li>My Feed</li></NavLink>
+        <NavLink to="/account"><li>My Page</li></NavLink>
+        <NavLink to="/favorites"><li>My Favorites</li></NavLink>
+      </NavBarStyle>
+      <LogoutStyle>
+        <NavLink to="#" onClick={handleLogoutClick}><li>Logout</li></NavLink>
+      </LogoutStyle>
+    </div>
+  )
+}
+
+const NavBarStyle = styled.div`
+    
+    a {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        margin: 10px;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 15px;
+        line-height: 25px;
+        box-shadow: 7px 7px grey;
+        font-weight: bold;
+        background: white;
+    }
+    a:link {
+        text-decoration: none;
+    }
+    a:visited {
+        text-decoration: none;
+        color: black;
+    }
+    li:hover {
+        box-shadow: 7px 7px black;
+    }
+    
+`
+
+const LogoutStyle = styled.div `
+  a {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    li {
+        margin: 10px;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 15px;
+        line-height: 25px;
+        box-shadow: 7px 7px grey;
+        font-weight: bold;
+        background: red;
+    }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+        color: black;
+    }
+
+    li:hover {
+        box-shadow: 7px 7px black;
+    }
+
+`
+
+export default NavBar
