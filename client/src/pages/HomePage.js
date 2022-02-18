@@ -1,11 +1,9 @@
-import React from 'react'
-import Post from '../components/Post'
+import React, { useEffect } from 'react'
 import NavBar from '../components/NavBar'
+import PostContainer from '../components/PostContainer'
 
-function HomePage({posts, currentUser, setUser}) {
-  const renderPosts = posts.map(post => {
-    return <Post key={post.id} post={post} currentUser={currentUser}/>
-  })
+function HomePage({currentUser, setCurrentUser, name}) {
+
   return (
     <div className="home-container">
       
@@ -13,13 +11,13 @@ function HomePage({posts, currentUser, setUser}) {
       <h2 className="page-title">Dev<em>Connect</em></h2>
     </div>
     <div className="home-nav">
-      <NavBar currentUser={currentUser} setUser={setUser}/>
+      <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
     </div>
     <div>
       <img className="prof-photo-home" src={currentUser.image_url} />
     </div>
     <div className="home-posts">
-      {renderPosts}
+      <PostContainer currentUser={currentUser} name={name}/>
     </div>
   </div>
   )

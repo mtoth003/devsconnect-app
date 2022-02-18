@@ -16,7 +16,13 @@ class Api::FavoritesController < ApplicationController
     favorites = Favorite.create(favorite_params)
     render json: favorites, status: :created
   end
-
+  
+  def destroy
+    favorite = Favorite.find_by(id: params[:id])
+    favorite.destroy
+    head :no_content
+  end
+  
   private
 
   def favorite_params

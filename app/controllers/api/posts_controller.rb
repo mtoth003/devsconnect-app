@@ -11,12 +11,12 @@ class Api::PostsController < ApplicationController
   end
 
   def index
-    render json: Post.all
+    render json: Post.all.order('created_at DESC')
   end
 
   def show
     post = Post.find(params[:id])
-    render json: post
+    render json: post, include: :favorites
   end
 
   def create

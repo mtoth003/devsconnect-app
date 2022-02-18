@@ -1,22 +1,16 @@
 import {useState, useEffect} from 'react'
-import UserPosts from '../components/UserPosts'
+// import currentUserPosts from '../components/currentUserPosts'
 import styled from "styled-components"
 import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
 import NavBar from '../components/NavBar'
 import NewPostForm from '../components/NewPostForm'
 import EditProfileForm from '../components/EditProfileForm'
+import PostContainer from '../components/PostContainer'
 
 
 
-function AccountPage({currentUser}) {
-  const [userPosts, setUserPosts] = useState([])
-  
-  useEffect(() => {
-    fetch(`/api/posts/users/${currentUser.id}`)
-    .then(r => r.json())
-    .then(userPosts => setUserPosts(userPosts))
-  }, [])
+function AccountPage({currentUser, name}) {
   
   return (
     <div>
@@ -26,7 +20,7 @@ function AccountPage({currentUser}) {
             <div className="names">
             <h1 id="name2">{currentUser.first_name}</h1>
             <h1 id="name2">{currentUser.last_name}</h1>
-            <h2 id="username2">@{currentUser.username}</h2>
+            <h2 id="currentUsername2">@{currentUser.currentUsername}</h2>
             <a href={currentUser.github} target="_blank" rel="noreferrer"><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
             <a href={currentUser.linkedin} target="_blank" rel="noreferrer"><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
           </div>
@@ -41,7 +35,7 @@ function AccountPage({currentUser}) {
         <div className="post-container">
           <NewPostForm currentUser={currentUser} />
           <h3>Your Posts:</h3>
-          <UserPosts currentUser={currentUser} userPosts={userPosts}/>
+          <PostContainer currentUser={currentUser} name={name} />
         </div>
       </AccountHeader>
     </div>
@@ -65,7 +59,7 @@ const AccountHeader = styled.div`
         margin: 5px;
         text-shadow: 3px 3px lightgrey;
     }
-    #username2 {
+    #currentUsername2 {
         font-size: 28px;
         margin: 5px;
         text-shadow: 3px 3px lightgrey;

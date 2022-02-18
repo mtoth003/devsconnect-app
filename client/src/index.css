@@ -148,8 +148,8 @@ form input[type="submit"]:hover{
   border-radius: 8%;
   border: 1px solid black;
   margin: 10px;
-  width: 350px;
-  height: 350px;
+  width: 20%;
+  height: 20%;
   box-shadow: 4px 4px lightgrey;
   float: left;
 }

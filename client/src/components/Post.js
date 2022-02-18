@@ -1,11 +1,22 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import styled from "styled-components"
 import "../styles/Post.css"
 
-function Post({post: {id, header, description, image_url, content_link, created_at, like_count, user, user_id}, currentUser}) {
+function Post({post: {id, header, description, image_url, content_link, created_at, like_count, user}, currentUser}) {
   const [isFavorited, setIsFavorited] = useState(false)
 
-  const handleClick = () => {
+  useEffect(() => {
+    fetch("api/favorites")
+    .then((r) => r.json())
+    .then(data => {
+      const filtered = data.filter(data => {
+        return (data.post.id === id) && (data.user_id === currentUser.id)
+      })
+      filtered.length > 0 ? setIsFavorited(true) : setIsFavorited(false)
+    })
+  }, [])
+
+  const handleFavorite = () => {
     fetch("api/favorites", {
       method: "POST",
       headers: {"Content-type": "application/json"},
@@ -16,6 +27,33 @@ function Post({post: {id, header, description, image_url, content_link, created_
     })
     .then(r => r.json()).then(() => setIsFavorited(true))
   }
+
+  const handleUnfavorite = () => {
+    fetch("api/favorites")
+    .then((r) => r.json())
+    .then(data => {
+      const filtered = data.filter(data => {
+        return (data.post.id === id) && (data.user_id === currentUser.id)
+      })
+      filtered.forEach(fav => {
+        fetch(`api/favorites/${fav.id}`, {
+          method: "DELETE"
+        })
+        .then(r => {
+          if(r.ok) {
+            r.json().then(() => {
+              setIsFavorited(false)
+            })
+          } else {
+            r.json.then(errors => {
+              console.log(errors)
+            })
+          }
+        })
+      })
+    })
+  }
+
   const parseTime = (created_at) => {
     const date = new Date(created_at)
     return date.getTime()
@@ -56,14 +94,14 @@ function Post({post: {id, header, description, image_url, content_link, created_
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             {isFavorited ? (
               <button
-                // onClick={(e) => handleUnfavorite(e)}
+                onClick={handleUnfavorite}
                 className="emoji-button favorite active"
               >
                 ★
               </button>
             ) : (
               <button id={id}
-                onClick={handleClick}
+                onClick={handleFavorite}
                 className="emoji-button favorite"
               >
                 ☆
