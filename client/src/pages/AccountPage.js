@@ -20,14 +20,14 @@ function AccountPage({currentUser, name}) {
             <div className="names">
             <h1 id="name2">{currentUser.first_name}</h1>
             <h1 id="name2">{currentUser.last_name}</h1>
-            <h2 id="currentUsername2">@{currentUser.currentUsername}</h2>
+            <h2 id="currentUsername2">@{currentUser.username}</h2>
             <a href={currentUser.github} target="_blank" rel="noreferrer"><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
             <a href={currentUser.linkedin} target="_blank" rel="noreferrer"><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
           </div>
         </div>
         <div>
           <div className="bio">{currentUser.bio}</div>
-          {/* <EditProfileForm currentUser={currentUser} /> */}
+          <EditProfileForm currentUser={currentUser} />
         </div>
         <div id="nav">
           <NavBar />

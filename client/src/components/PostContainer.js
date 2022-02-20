@@ -6,16 +6,19 @@ function PostContainer({currentUser, name}) {
   const [favorites, setFavorites] = useState([])
 
   useEffect(() => {
+    fetch("api/favorites")
+    .then(r => r.json())
+    .then(data => setFavorites(data))
+  }, [])
+
+
+  useEffect(() => {
     fetch("api/posts")
     .then((r) => r.json())
     .then(data => setPosts(data))
   }, [])
 
-  // useEffect(() => {
-  //   fetch("api/favorites")
-  //   .then(r => r.json())
-  //   .then(data => setFavorites(data))
-  // }, [])
+  console.log(favorites)
 
   const filteredPosts = () => {
     if (name === "account") {

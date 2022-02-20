@@ -4,12 +4,13 @@ class Api::FavoritesController < ApplicationController
   skip_before_action :authorize, only: [:index, :show]
 
   def index
-    render json: Favorite.all
+    favorites = Favorite.all
+    render json: favorites
   end
 
   def show
     favorites = Favorite.find(params[:id])
-    render json: favorites, include: :posts
+    render json: favorites
   end
 
   def create
@@ -22,7 +23,7 @@ class Api::FavoritesController < ApplicationController
     favorite.destroy
     head :no_content
   end
-  
+
   private
 
   def favorite_params

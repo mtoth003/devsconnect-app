@@ -26,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage currentUser={currentUser} setCurrentUser={setCurrentUser}/>}/>
           <Route path="/favorites" element={<FavoritesPage currentUser={currentUser} name="favorites"/>}/>
-          <Route path="account" element={<AccountPage currentUser={currentUser} name="account" />}/>
+          <Route path="/account" element={<AccountPage currentUser={currentUser} name="account" />}/>
         </Routes>
       </div>
     </>
