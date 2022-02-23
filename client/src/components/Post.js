@@ -1,9 +1,12 @@
 import {useState, useEffect} from "react"
+// import {useNavigate} from 'react-router'
 import styled from "styled-components"
 import "../styles/Post.css"
 
 function Post({post: {id, header, description, image_url, content_link, created_at, like_count, user}, currentUser}) {
   const [isFavorited, setIsFavorited] = useState(false)
+
+  // const navigate = useNavigate()
 
   useEffect(() => {
     fetch("api/favorites")
@@ -28,6 +31,7 @@ function Post({post: {id, header, description, image_url, content_link, created_
     .then(r => r.json()).then(() => setIsFavorited(true))
   }
 
+
   const handleUnfavorite = () => {
     fetch("api/favorites")
     .then((r) => r.json())
@@ -41,14 +45,8 @@ function Post({post: {id, header, description, image_url, content_link, created_
         })
         .then(r => {
           if(r.ok) {
-            r.json().then(() => {
-              setIsFavorited(false)
-            })
-          } else {
-            r.json.then(errors => {
-              console.log(errors)
-            })
-          }
+            setIsFavorited(false)
+          } 
         })
       })
     })
@@ -100,7 +98,7 @@ function Post({post: {id, header, description, image_url, content_link, created_
                 ★
               </button>
             ) : (
-              <button id={id}
+              <button
                 onClick={handleFavorite}
                 className="emoji-button favorite"
               >

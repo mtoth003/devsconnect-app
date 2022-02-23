@@ -1,18 +1,7 @@
 import {NavLink} from "react-router-dom"
 import styled from "styled-components"
-// import {Button} from "../styles"
 
 function NavBar({setCurrentUser}) {
-
-  // const handleLogoutClick = () => {
-  //   fetch("api/logout", {
-  //     method: "DELETE",
-  //   }).then((r) => {
-  //     if(r.ok) {
-  //       setUser(null)
-  //     }
-  //   })
-  // }
 
   const handleLogoutClick = () => {
     setCurrentUser(null);
@@ -24,7 +13,7 @@ function NavBar({setCurrentUser}) {
       <NavBarStyle>
         <NavLink to="/"><li>My Feed</li></NavLink>
         <NavLink to="/account"><li>My Page</li></NavLink>
-        <NavLink to="/favorites"><li>My Favorites</li></NavLink>
+        {/* <NavLink to="/favorites"><li>My Favorites</li></NavLink> */}
       </NavBarStyle>
       <LogoutStyle>
         <NavLink to="#" onClick={handleLogoutClick}><li>Logout</li></NavLink>
@@ -50,6 +39,7 @@ const NavBarStyle = styled.div`
         font-weight: bold;
         background: white;
     }
+    
     a:link {
         text-decoration: none;
     }

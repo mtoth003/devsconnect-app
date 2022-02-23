@@ -13,6 +13,8 @@ function NewPostForm({currentUser}) {
   const [errors, setErrors] = useState([])
   const [isSelected, setIsSelected] = useState(false)
 
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     fetch("/api/posts", {
@@ -23,10 +25,11 @@ function NewPostForm({currentUser}) {
         description,
         image_url: imageUrl,
         content_url: contentUrl,
-        likeCount: 0,
+        like_count: 0,
         user_id: userId
-      })
+      }),
     })
+    navigate("/account")
   }
 
   return (

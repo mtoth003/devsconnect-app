@@ -1,15 +1,10 @@
 import {useState, useEffect} from 'react'
 import Post from './Post'
+import Search from './Search'
 
 function PostContainer({currentUser, name}) {
+  const [search, setSearch] = useState('')
   const [posts, setPosts] = useState([])
-  const [favorites, setFavorites] = useState([])
-
-  useEffect(() => {
-    fetch("api/favorites")
-    .then(r => r.json())
-    .then(data => setFavorites(data))
-  }, [])
 
 
   useEffect(() => {
@@ -18,21 +13,25 @@ function PostContainer({currentUser, name}) {
     .then(data => setPosts(data))
   }, [])
 
-  console.log(favorites)
-
   const filteredPosts = () => {
     if (name === "account") {
       return posts.filter(post => post.username === currentUser.username)
-    // } else if (name === "favorties") {
-    //   return posts.filter(post => post.usernmae === favorites.filter(fav => fav.username === currentUser.username))
-    } else {
+  } else {
       return posts
     }
   }
 
-  const renderPosts = filteredPosts().map(post => <Post key={post.id} post={post} currentUser={currentUser}/>)
+  const searchPosts = posts.filter(post => post.header.toLowerCase().includes(search.toLocaleLowerCase()))
+  
+  const renderPosts = filteredPosts().map(post => <Post key={post.id} post={post} currentUser={currentUser} />)
+
+  const renderSearchPosts = searchPosts.map(post => <Post key={post.id} post={post} currentUser={currentUser} />)
+
   return (
-    <div>{renderPosts}</div>
+    <div>
+      <Search search={search} setSearch={setSearch} />
+      {search === "" ? renderPosts : renderSearchPosts}
+    </div>
   )
 }
 

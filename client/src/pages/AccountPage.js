@@ -44,7 +44,7 @@ function AccountPage({currentUser, name}) {
 
 const AccountHeader = styled.div`
    
-.profile-photo {
+    .profile-photo {
         border-radius: 150px;
         border: 1px solid black;
         margin: 5px;
@@ -111,7 +111,6 @@ const AccountHeader = styled.div`
         justify-content: center;
         align-items: center;
         text-align: center;
-        z-index: -1;
     }
     #nav {
         position: relative;
@@ -119,8 +118,7 @@ const AccountHeader = styled.div`
         left: 3%;
         width: 25%;
         z-index: 1;
-      
-    }
+      }
 `
 
 export default AccountPage

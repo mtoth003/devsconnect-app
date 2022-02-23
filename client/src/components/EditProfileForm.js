@@ -1,15 +1,12 @@
 import {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import {FormField, Error} from "../styles"
+import {useNavigate} from 'react-router'
 
 function EditProfileForm({currentUser}) {
-  // const [firstName, setFirstName] = useState("")
-  // const [lastName, setLastName] = useState("")
-  // const [username, setUsername] = useState("")
-  // const [github, setGithub] = useState("")
-  // const [linkedin, setLinkedin] = useState("")
-  // const [bio, setBio] = useState("")
-  // const [imageUrl, setImageUrl] = useState("")
+
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -25,7 +22,7 @@ function EditProfileForm({currentUser}) {
     fetch('api/me')
     .then(resp => resp.json())
     .then(data => setFormData(data))
-}, [isSelected])
+  }, [isSelected])
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.id]: e.target.value})
@@ -50,27 +47,9 @@ function EditProfileForm({currentUser}) {
         image_url: "",
       })
       setIsSelected(false)
+      navigate("/account")
     })
   }
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   fetch("api/me", {
-  //     method: "PATCH",
-  //     headers: {"Content-type": "application-json"},
-  //     body: JSON.stringify({
-  //       first_name: firstName,
-  //       last_name: lastName,
-  //       username,
-  //       github,
-  //       linkedin,
-  //       bio,
-  //       image_url: imageUrl,
-  //     }),
-  //   }).then((r) => {
-
-  //   })
-  // }
 
   return (
     <div>
