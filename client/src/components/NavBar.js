@@ -12,7 +12,7 @@ function NavBar({setCurrentUser}) {
     <div>
       <NavBarStyle>
         <NavLink to="/"><li>My Feed</li></NavLink>
-        <NavLink to="/account"><li>My Page</li></NavLink>
+        <NavLink to="/account"><li>My Account</li></NavLink>
         {/* <NavLink to="/favorites"><li>My Favorites</li></NavLink> */}
       </NavBarStyle>
       <LogoutStyle>
@@ -39,7 +39,7 @@ const NavBarStyle = styled.div`
         font-weight: bold;
         background: white;
     }
-    
+
     a:link {
         text-decoration: none;
     }
@@ -48,7 +48,7 @@ const NavBarStyle = styled.div`
         color: black;
     }
     li:hover {
-        box-shadow: 7px 7px black;
+        box-shadow: 7px 7px #00FFFF;
     }
     
 `
@@ -82,7 +82,7 @@ const LogoutStyle = styled.div `
     }
 
     li:hover {
-        box-shadow: 7px 7px black;
+        box-shadow: 7px 7px #00FFFF;
     }
 
 `

@@ -144,6 +144,7 @@ form input[type="submit"]:hover{
   font-family: 'Inconsolata', monospace;
   padding: 10px;
   margin-left: 15px;
+  /* color: white */
 }
 
 .prof-photo-home {
@@ -183,5 +184,11 @@ form input[type="submit"]:hover{
 }
 
 html {
-  height: 100vh;
+  /* height: 100vh; */
+  /* background-color: #0F1624; */
+  /* background: rgb(2,0,38); */
+  /* background: linear-gradient(90deg, rgba(2,0,38,1) 17%, rgba(11,0,97,1) 34%, rgba(41,39,106,1) 54%, rgba(57,58,105,1) 79%); */
+  /* background: rgb(1,0,13);
+background: linear-gradient(90deg, rgba(1,0,13,0.9794292717086834) 17%, rgba(8,4,46,0.9486169467787114) 34%, rgba(21,20,55,0.9318102240896359) 54%, rgba(4,4,32,0.9094012605042017) 79%); */
+  background: url('./images/pexels-henry-&-co-2341290.jpg');
 }
