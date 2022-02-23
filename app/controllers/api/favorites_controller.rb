@@ -8,6 +8,11 @@ class Api::FavoritesController < ApplicationController
     render json: favorites
   end
 
+  def user_show
+    favs = Favorite.find_by(user_id:params[:id])
+    render json: favs
+  end
+
   def show
     favorites = Favorite.find(params[:id])
     render json: favorites

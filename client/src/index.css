@@ -192,3 +192,36 @@ html {
 background: linear-gradient(90deg, rgba(1,0,13,0.9794292717086834) 17%, rgba(8,4,46,0.9486169467787114) 34%, rgba(21,20,55,0.9318102240896359) 54%, rgba(4,4,32,0.9094012605042017) 79%); */
   background: url('./images/pexels-henry-&-co-2341290.jpg');
 }
+
+.paginationBttns {
+  width: 95%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 2px solid black;
+  color: black;
+  cursor: pointer;
+}
+
+.paginationBttns a:hover {
+  color: white;
+  background-color: black;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: black;
+}
+
+.fav-nav {
+  width: 50%;
+  margin: auto
+}

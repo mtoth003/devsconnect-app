@@ -13,7 +13,7 @@ function NavBar({setCurrentUser}) {
       <NavBarStyle>
         <NavLink to="/"><li>My Feed</li></NavLink>
         <NavLink to="/account"><li>My Account</li></NavLink>
-        {/* <NavLink to="/favorites"><li>My Favorites</li></NavLink> */}
+        <NavLink to="/favorites"><li>My Favorites</li></NavLink>
       </NavBarStyle>
       <LogoutStyle>
         <NavLink to="#" onClick={handleLogoutClick}><li>Logout</li></NavLink>
@@ -48,7 +48,7 @@ const NavBarStyle = styled.div`
         color: black;
     }
     li:hover {
-        box-shadow: 7px 7px #00FFFF;
+        box-shadow: 7px 7px black;
     }
     
 `
@@ -82,7 +82,7 @@ const LogoutStyle = styled.div `
     }
 
     li:hover {
-        box-shadow: 7px 7px #00FFFF;
+        box-shadow: 7px 7px black;
     }
 
 `

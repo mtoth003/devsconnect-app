@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/me', to: 'users#show'
     get '/account', to: 'users#show'
     get '/posts/users/:id', to: "posts#user_show"
+    get 'favorites/users/:id', to: "favorites#user_show"
 
     post '/signup', to: 'users#create'
     post '/login', to: 'sessions#create'

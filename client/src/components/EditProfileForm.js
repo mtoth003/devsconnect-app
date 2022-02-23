@@ -28,7 +28,8 @@ function EditProfileForm({currentUser}) {
     setFormData({...formData, [e.target.id]: e.target.value})
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const configObj = {
       method: "PATCH",
       headers: {"Content-Type": "application/json"},
@@ -47,7 +48,7 @@ function EditProfileForm({currentUser}) {
         image_url: "",
       })
       setIsSelected(false)
-      navigate("/account")
+      window.location.reload(false)
     })
   }
 

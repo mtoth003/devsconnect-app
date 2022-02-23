@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   def username
     self.user.username
   end
+
+  def user_image
+    self.user.image_url
+  end
 end
