@@ -141,7 +141,8 @@ form input[type="submit"]:hover{
 
 .page-title {
   font-size: 4rem;
-  font-family: 'Inconsolata', monospace;
+  font-family: "Permanent Marker", cursive;
+  color: #363636;
   padding: 10px;
   margin-left: 15px;
   /* color: white */

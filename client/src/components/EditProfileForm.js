@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router'
 
 function EditProfileForm({currentUser}) {
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     first_name: "",

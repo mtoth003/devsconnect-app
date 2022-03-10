@@ -3,7 +3,7 @@ import {useState, useEffect} from "react"
 import styled from "styled-components"
 import "../styles/Post.css"
 
-function Post({post: {id, header, description, image_url, content_link, created_at, like_count, user}, currentUser}) {
+function Post({post: {id, header, description, image_url, content_url, created_at, like_count, user}, currentUser}) {
   const [isFavorited, setIsFavorited] = useState(false)
 
   // const navigate = useNavigate()
@@ -115,7 +115,7 @@ function Post({post: {id, header, description, image_url, content_link, created_
               </div>
             </div>
           </div>
-          <a href={content_link} target="_blank">
+          <a href={content_url} target="_blank">
           <div className="mock-img-all">
             <div className="mock-img">
               <img src={image_url}/>

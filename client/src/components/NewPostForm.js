@@ -29,7 +29,8 @@ function NewPostForm({currentUser}) {
         user_id: userId
       }),
     })
-    navigate("/account")
+    window.location.reload(false)
+    // navigate("/account")
   }
 
   return (
